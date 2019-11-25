@@ -23,17 +23,18 @@
 			uniform float _Speed;
 			uniform float _Scale;
 
+			float _Blend;
+
 			float4 Frag(VaryingsDefault i) : SV_Target
 			{
 				float2 offset = float2(_Power * sin(_Time.w + i.texcoord.x * 10), _Power * cos(_Time.w + i.texcoord.y * 10));
 
-				offset = (i.texcoord - 0.5) * 2; 
+				offset = (i.texcoord - 0.5) * 2;
 
-				float4 col = tex2D(_MainTex, i.texcoord);
-				float4 colA = tex2D(_MainTex, i.texcoord + offset * _Power * sin((_Time.w * _Speed) + i.texcoord.x * _Scale));
-				float4 colB = tex2D(_MainTex, i.texcoord - offset * _Power * cos((_Time.w * _Speed) + i.texcoord.y * _Scale));
-
-				return float4(colA.r, col.g, colB.b, col.a);
+				float4 col = tex2D(_MainTex, i.texcoord + offset * _Power * sin((_Time.w * _Speed) + i.texcoord.x * _Scale));			
+				float luminance = dot(col.rgb, float3(0.2126729, 0.7151522, 0.0721750));			
+				col.rgb = lerp(col.rgb, luminance.xxx, _Blend.xxx);
+				return col;
 			}
 			ENDHLSL
 		}

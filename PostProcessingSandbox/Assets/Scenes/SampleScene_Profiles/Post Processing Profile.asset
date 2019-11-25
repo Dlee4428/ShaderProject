@@ -35,7 +35,7 @@ MonoBehaviour:
     value: 0.05
   speed:
     overrideState: 1
-    value: 2
+    value: 4
   scale:
     overrideState: 1
     value: 10
