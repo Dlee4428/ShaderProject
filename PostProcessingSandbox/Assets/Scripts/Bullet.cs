@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [Header("Data")]
     [SerializeField] private DataFloat speed;
     [SerializeField] private DataFloat lifeTime;
+    [SerializeField] private GameObject part;
     [Header("Reference")]
     [SerializeField] public Data data;
     // Use this for initialization
@@ -38,6 +39,8 @@ public class Bullet : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+
+        Instantiate(part, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }

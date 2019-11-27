@@ -147,4 +147,5 @@ MonoBehaviour:
   lifeTime:
     name: lifeTime
     value: 3
+  part: {fileID: 6802859889815711215, guid: 2b22f0189f2a98141ae4b657d978f767, type: 3}
   data: {fileID: 4460159078101356363}
