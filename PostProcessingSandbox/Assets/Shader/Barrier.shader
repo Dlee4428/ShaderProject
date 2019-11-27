@@ -92,7 +92,7 @@ Shader "Unlit/Barrier"
 				// Lerp Distortion color & Fresnel color
 				main = lerp(distortionColor, main, i.normal.r);
 				main += (1 - intersection) * (face > 0 ? 0.03: 0.3) * _MainColor * _Fresnel;
-				return float4(main, 0.9);
+				return float4(main, 0.7);
 			}
 			ENDCG
 		}
